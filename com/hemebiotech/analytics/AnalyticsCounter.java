@@ -1,43 +1,47 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
-private static int headacheCount = 0;
-	private static int rashCount = 0;
-	private static int dialatedPupilCount = 0;
 
-	public static void main(String args[]) throws Exception {
-		// first get input
-		FileReader fileReader = new FileReader("symptoms.txt");
-		BufferedReader reader = new BufferedReader(fileReader);
-		String line = reader.readLine();
+    private ISymptomReader reader;
+    private ISymptomWriter writer;
 
-		while (line != null) {
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headacheCount++;
-				System.out.println("number of headaches: " + headacheCount);
-			} else if (line.equals("rash")) {
-				rashCount++;
-				System.out.println("number of rashes: " + rashCount);
-			} else if (line.contains("dialated pupils")) {
-				dialatedPupilCount++;
-				System.out.println("number of dialated pupils: " + dialatedPupilCount);
-			}
+    public AnalyticsCounter(ISymptomReader read, ISymptomWriter write) {
+        reader = read;
+        writer = write;
+    }
 
-			line = reader.readLine(); // get another symptom
-		}
+    public List<String> getSymptoms() {
+        List<String> symptoms = new ArrayList<String>();
+        symptoms = reader.getSymptoms();
 
-		reader.close();
+        return symptoms;
+    }
 
-		// next generate output
-		FileWriter writer = new FileWriter("result.out", false); // replace to existent text in result.out
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + dialatedPupilCount + "\n");
-		writer.close();
-	}
+    public Map<String, Integer> countSymptoms(List<String> symptoms) {
+        Map<String, Integer> counter = new HashMap<String, Integer>();
+        for (String symptom : symptoms) {
+            if (counter.containsKey(symptom)) {
+                counter.put(symptom, counter.get(symptom) + 1);
+		    } else {
+                counter.put(symptom, 1);
+		    }
+        }
+        return counter;
+    }
+
+    public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
+        TreeMap<String, Integer> sortedSymptoms = new TreeMap<>();
+        sortedSymptoms.putAll(symptoms);
+        return sortedSymptoms;
+    }
+
+    public void writeSymptoms(Map<String, Integer> symptoms) {
+        writer.writeSymptoms(symptoms);
+    }
 }
