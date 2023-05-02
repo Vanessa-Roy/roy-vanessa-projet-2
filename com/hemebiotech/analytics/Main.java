@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         ISymptomReader readSymptomDataFromFile = new ReadSymptomDataFromFile("symptoms.txt");
-        ISymptomWriter writeSymptomDataToFile = new WriteSymptomDataToFile("result.out");
+        ISymptomWriter writeSymptomDataToFile = new WriteSymptomDataToFile();
         AnalyticsCounter analyticsCounter = new AnalyticsCounter(readSymptomDataFromFile, writeSymptomDataToFile);
 
         List<String> symptoms = analyticsCounter.getSymptoms();
