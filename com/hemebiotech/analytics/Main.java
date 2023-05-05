@@ -4,16 +4,21 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
+  /**
+  * The main class calls every method to get a file with the sorted symptoms and their quantities.
+  *  
+  * @param  args The command line arguments.
+  */
+  public static void main(String[] args) {
 
-        ISymptomReader readSymptomDataFromFile = new ReadSymptomDataFromFile("symptoms.txt");
-        ISymptomWriter writeSymptomDataToFile = new WriteSymptomDataToFile();
-        AnalyticsCounter analyticsCounter = new AnalyticsCounter(readSymptomDataFromFile, writeSymptomDataToFile);
+    ISymptomReader reader = new ReadSymptomDataFromFile("symptoms.txt");
+    ISymptomWriter writer = new WriteSymptomDataToFile();
+    AnalyticsCounter analyticsCounter = new AnalyticsCounter(reader, writer);
 
-        List<String> symptoms = analyticsCounter.getSymptoms();
-        Map<String, Integer> symptomsCounter = analyticsCounter.countSymptoms(symptoms);
-        Map<String, Integer> symptomsCounterSorted = analyticsCounter.sortSymptoms(symptomsCounter);
-        analyticsCounter.writeSymptoms(symptomsCounterSorted);
-    }
+    List<String> symptoms = analyticsCounter.getSymptoms();
+    Map<String, Integer> symptomsCounter = analyticsCounter.countSymptoms(symptoms);
+    Map<String, Integer> sortedSymptoms = analyticsCounter.sortSymptoms(symptomsCounter);
+    analyticsCounter.writeSymptoms(sortedSymptoms);
+  }
 
 }
