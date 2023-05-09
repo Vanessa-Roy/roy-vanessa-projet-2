@@ -3,9 +3,13 @@ package com.hemebiotech.analytics;
 import java.util.List;
 import java.util.Map;
 
+/**
+* Instantiates ISymptomReader, ISymptomWriter and AnalyticsCounter to get the final document.
+*
+*/
 public class Main {
   /**
-  * The main class calls every method to get a file with the sorted symptoms and their quantities.
+  * Calls every method to get a file with the sorted symptoms and their quantities.
   *  
   * @param  args The command line arguments.
   */

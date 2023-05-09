@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+* Uses both interfaces ISymptomReader, ISymptomWriter in attempt to count and sort symptoms.
+*
+*/
 public class AnalyticsCounter {
 
   private ISymptomReader reader;

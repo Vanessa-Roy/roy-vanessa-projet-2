@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+* Implements the interface ISymptomWriter in attempt to write symptoms to a file.
+*
+*/
 public class WriteSymptomDataToFile implements ISymptomWriter {
 
   @Override
