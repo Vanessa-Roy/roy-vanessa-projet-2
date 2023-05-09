@@ -12,7 +12,7 @@ This project is used by OpenClassRooms in attempt to validate the project 2 from
 
 ## Documentation
 
-[Documentation Javadoc](https://roy-vanessa.hebfree.org/package-summary.html)
+[Documentation Javadoc](https://roy-vanessa.hebfree.org/)
 
 
 ## Authors
