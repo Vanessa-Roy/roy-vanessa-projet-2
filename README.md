@@ -12,7 +12,7 @@ This project is used by OpenClassRooms in attempt to validate the project 2 from
 
 ## Documentation
 
-[Documentation Javadoc](https://roy-vanessa.hebfree.org/)
+[Documentation Javadoc](https://roy-vanessa.hebfree.org/com/hemebiotech/analytics/package-summary.html)
 
 
 ## Authors
